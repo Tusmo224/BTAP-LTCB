@@ -1,0 +1,171 @@
+'''1.Write python program:
+a)Convert two lists into a dictionary
+b)Merge two Python dictionaries into one
+c)Print the value of key ‘history’ from the below dict
+   {‘id’:4, ’history’:’sample’, ’price’:73}'''
+#a)Convert two lists into a dictionary
+keys = ['a', 'b', 'c']
+values = [1, 2, 3]
+
+d = {}
+for i in range(len(keys)):
+    d[keys[i]] = values[i]
+
+print(d)
+
+#b)Merge two Python dictionaries into one
+dict1 = {'x': 1, 'y': 2}
+dict2 = {'z': 3, 'w': 4}
+
+for k in dict2:
+    dict1[k] = dict2[k]   # thêm từng phần tử của dict2 vào dict1
+print(dict1)
+
+#c)Print the value of key ‘history’ from the below dict {‘id’:4, ’history’:’sample’, ’price’:73}
+d = {'id': 4, 'history': 'sample', 'price': 73}
+print(d['history'])
+
+'''a)Initialize dictionary with default values
+b)Create a dictionary by extracting the keys from a given dictionary
+c)Delete a list of keys from a dictionary
+d)Check if a value exists in a dictionary
+e)Rename key of a dictionary
+f)Get the key of a minimum value from the following dictionary
+  {‘a’:4, ’b’:18, ’c’:73}
+a)Change value of a key in a nested dictionary'''
+
+#a)Initialize dictionary with default values
+keys = ['a', 'b', 'c']
+default_value = 0
+
+d = {}
+for k in keys:
+    d[k] = default_value
+
+print(d)
+
+#b)Create a dictionary by extracting the keys from a given dictionary
+d = {'a': 1, 'b': 2, 'c': 3, 'd': 4}
+keys_to_extract = ['a', 'c']
+
+new_d = {}
+for k in keys_to_extract:
+    new_d[k] = d[k]
+
+print(new_d)
+#c)Delete a list of keys from a dictionary
+d = {'a': 1, 'b': 2, 'c': 3, 'd': 4}
+keys_to_delete = ['b', 'd']
+
+for k in keys_to_delete:
+    if k in d:
+        del d[k]
+
+print(d)
+#d)Check if a value exists in a dictionary
+d = {'a': 1, 'b': 2, 'c': 3}
+value_to_check = 2
+
+found = False
+for v in d.values():
+    if v == value_to_check:
+        found = True
+
+print(found)   # True
+#e)Rename key of a dictionary
+d = {'name': 'Alice', 'age': 25}
+
+if 'name' in d:
+    d['full_name'] = d['name']
+    del d['name']
+
+print(d)
+
+#f)Get the key of a minimum value from the following dictionary
+d = {'a': 4, 'b': 18, 'c': 73}
+
+min_key = None
+min_value = None
+
+for k in d:
+    if min_value is None or d[k] < min_value:
+        min_value = d[k]
+        min_key = k
+
+print(min_key)
+
+#a) change value of a key in a nested dictionary
+d = {
+    'person': {'name': 'Alice', 'age': 25}
+}
+
+d['person']['age'] = 30
+print(d)
+
+
+#Write a Python program that counts the number of times characters appear in a text paragraph and its appearing positions'''
+s = ("Keys views are set-like since their entries are unique and hashable. "
+     "Items views also have set-like "
+     "operations since the (key, value) pairs are unique and the keys are hashable.")
+
+stats = {}
+
+# Count characters and positions
+for i in range(len(s)):
+    ch = s[i]
+    if ch not in stats:
+        stats[ch] = [1, [i]]   # [count, [positions]]
+    else:
+        stats[ch][0] = stats[ch][0] + 1
+        stats[ch][1].append(i)
+
+total = len(s)
+
+# Print results
+print("Total characters:", total)
+print("Unique characters:", len(stats))
+print()
+
+for k in stats:
+    count = stats[k][0]
+    positions = stats[k][1]
+    print("Character", repr(k), "appears", count, "times at positions", positions)
+
+
+max_char = None
+min_char = None
+max_count = None
+min_count = None
+
+for k in stats:
+    if max_count is None or stats[k][0] > max_count:
+        max_count = stats[k][0]
+        max_char = k
+    if min_count is None or stats[k][0] < min_count:
+        min_count = stats[k][0]
+        min_char = k
+
+print()
+print("Most frequent:", repr(max_char), "with", max_count, "times")
+print("Least frequent:", repr(min_char), "with", min_count, "times")
+
+#Write a program using a dictionary containing keys starting from 1 and values containing prime numbers less than a value N.'''
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5)+1):
+        if n % i == 0:
+            return False
+    return True
+
+N = 20
+prime_list = []
+for i in range(2, N):
+    if is_prime(i):
+        prime_list.append(i)
+
+prime_dict = {}
+for k in range(1, N+1):
+    prime_dict[k] = prime_list
+
+print(prime_dict)
