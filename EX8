@@ -1,0 +1,61 @@
+# 1. Handle ZeroDivisionError
+def divide_numbers(a, b):
+    try:
+        return a / b
+    except ZeroDivisionError:
+        print("Error: Cannot divide by zero!")
+        return None
+
+
+# 2. Prompt integer input and raise ValueError
+def get_integer():
+    user_input = input("Enter an integer: ")
+    try:
+        val = int(user_input)
+        return val
+    except ValueError:
+        raise ValueError("Invalid input! You must enter an integer.")
+
+
+# 3. Prompt two numbers and raise TypeError if not numerical
+def get_two_numbers():
+    a = input("Enter first number: ")
+    b = input("Enter second number: ")
+    try:
+        a = float(a)
+        b = float(b)
+        return a, b
+    except ValueError:
+        raise TypeError("Inputs must be numerical values!")
+
+
+# 4. Operation on list with IndexError handling
+def access_list_element(lst, index):
+    try:
+        return lst[index]
+    except IndexError:
+        print("Error: Index out of range!")
+        return None
+
+
+# 5. Handle KeyboardInterrupt
+def get_number_with_interrupt():
+    try:
+        num = int(input("Enter a number (Ctrl+C to cancel): "))
+        return num
+    except KeyboardInterrupt:
+        print("\nInput cancelled by user.")
+        return None
+
+
+# 6. Handle ArithmeticError
+def safe_division(a, b):
+    try:
+        return a / b
+    except ArithmeticError:
+        print("An arithmetic error occurred!")
+        return None
+
+
+
+if __name__ == "__main__":
